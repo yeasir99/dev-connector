@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>hello world</h1>
-    </div>
+    <Fragment>
+      <h1>App</h1>
+    </Fragment>
   );
 };
 
