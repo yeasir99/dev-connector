@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";
-import { FaCode, FaSignOutAlt } from "react-icons/fa";
+import { FaCode, FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
+      <li>
+        <Link to="/dashboard">
+          <FaUserAlt /> <span className="hide-sm">Dashboard</span>
+        </Link>
+      </li>
       <li>
         <a href="#!" onClick={logout}>
           <FaSignOutAlt /> <span className="hide-sm">Logout</span>
