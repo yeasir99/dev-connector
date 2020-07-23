@@ -54,3 +54,34 @@ export const createProfile = (
     });
   }
 };
+
+// Add experience
+
+export const addExperience = (formData, history) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'applicaton/json',
+      },
+    };
+    const res = await axios.put('/api/profile/experience', formData, config);
+
+    dispatch({
+      type: ACTIONS.UPDATE_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Experience Added', 'success'));
+
+    history.push('/dashboard');
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(err.msg, 'danger')));
+    }
+    dispatch({
+      type: ACTIONS.PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};

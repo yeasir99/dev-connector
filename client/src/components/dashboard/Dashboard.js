@@ -1,10 +1,11 @@
-import React, { useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/profile";
-import Spinner from "../layout/Spinner";
-import { FaUserAlt } from "react-icons/fa";
+import React, { useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profile';
+import Spinner from '../layout/Spinner';
+import { FaUserAlt } from 'react-icons/fa';
+import DashboardActions from './DashboardActions';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -25,7 +26,9 @@ const Dashboard = ({
         <FaUserAlt /> Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet setup a profile add some info</p>
