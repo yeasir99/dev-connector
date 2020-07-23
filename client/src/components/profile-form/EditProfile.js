@@ -10,7 +10,6 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from 'react-icons/fa';
-import { STATES } from 'mongoose';
 import { useEffect } from 'react';
 
 const EditProfile = ({

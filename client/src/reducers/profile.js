@@ -1,4 +1,4 @@
-import * as ACTIONS from "../actions/types";
+import * as ACTIONS from '../actions/types';
 
 const initialState = {
   profile: null,
@@ -12,6 +12,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case ACTIONS.GET_PROFILE:
+    case ACTIONS.UPDATE_PROFILE:
       return {
         ...state,
         profile: payload,
