@@ -1,7 +1,7 @@
-import * as ACTIONS from "../actions/types";
+import * as ACTIONS from '../actions/types';
 
 const initialState = {
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,
   user: null,
@@ -19,7 +19,7 @@ export default function (state = initialState, action) {
       };
     case ACTIONS.REGISTER_SUCCESS:
     case ACTIONS.LOGIN_SUCCESS:
-      localStorage.setItem("token", payload.token);
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         ...payload,
@@ -30,7 +30,8 @@ export default function (state = initialState, action) {
     case ACTIONS.AUTH_ERROR:
     case ACTIONS.LOGIN_FAIL:
     case ACTIONS.LOGOUT:
-      localStorage.removeItem("token");
+    case ACTIONS.ACCOUNT_DELETED:
+      localStorage.removeItem('token');
       return {
         ...state,
         token: null,
