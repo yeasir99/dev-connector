@@ -18,6 +18,63 @@ export const getCurrentProfile = () => async dispatch => {
   }
 };
 
+// Get all profile
+
+export const getProfiles = () => async dispatch => {
+  dispatch({
+    type: ACTIONS.CLEAR_PROFILE,
+  });
+  try {
+    const res = await axios.get('/api/profile');
+
+    dispatch({
+      type: ACTIONS.GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ACTIONS.PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get all profile by id
+
+export const getProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/profile/${userId}`);
+
+    dispatch({
+      type: ACTIONS.GET_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ACTIONS.PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get github repos
+
+export const getGithubRepos = username => async dispatch => {
+  try {
+    const res = await axios.get(`/api/profile/github/${username}`);
+
+    dispatch({
+      type: ACTIONS.GET_REPOS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ACTIONS.PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // create or update profile
 
 export const createProfile = (
