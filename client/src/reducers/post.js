@@ -16,10 +16,16 @@ export default (state = initialState, action) => {
         posts: payload,
         loading: false,
       };
+    case ACTIONS.GET_POST:
+      return {
+        ...state,
+        post: payload,
+        loading: false,
+      };
     case ACTIONS.ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, payload],
+        posts: [payload, ...state.posts],
         loading: false,
       };
     case ACTIONS.DELETE_POST:
