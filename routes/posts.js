@@ -140,7 +140,7 @@ router.put('/like/:id', auth, async (req, res) => {
             });
         }
         post.likes.unshift({
-            user: req.params.id
+            user: req.user.id
         })
         await post.save();
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/post';
 import Spinner from '../layout/Spinner';
-import { faUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import PostItem from './PostItem';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
@@ -16,7 +16,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <Fragment>
       <h1 className="large text-primary">Posts</h1>
       <p className="lead">
-        <faUser /> Welcome to the community
+        <FaUser /> Welcome to the community
       </p>
       <div className="posts">
         {posts.map(post => (
