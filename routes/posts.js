@@ -244,9 +244,12 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
             })
         }
 
-        const removeIndex = post.comments.map(comment => comment.user.toString()).indexOf(req.params.id);
+        post.comments = post.comments.filter(
+            ({
+                id
+            }) => id !== req.params.comment_id
+        );
 
-        post.comments.splice(removeIndex, 1);
 
         await post.save();
 
