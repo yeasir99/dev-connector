@@ -48,6 +48,23 @@ export default (state = initialState, action) => {
         ),
         loading: false,
       };
+    case ACTIONS.ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+        loading: false,
+      };
+    case ACTIONS.REMOVE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            comment => comment._id !== payload
+          ),
+        },
+        loading: false,
+      };
     default:
       return state;
   }
