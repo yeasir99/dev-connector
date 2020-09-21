@@ -142,7 +142,7 @@ const EditProfile = ({
             onChange={e => handleChange(e)}
           />
           <small className="form-text">
-            City & state suggested (eg. Boston, MA)
+            City &amp; state suggested (eg. Boston, MA)
           </small>
         </div>
         <div className="form-group">
