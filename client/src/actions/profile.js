@@ -32,9 +32,10 @@ export const getProfiles = () => async dispatch => {
       payload: res.data,
     });
   } catch (err) {
+    console.error(err);
     dispatch({
       type: ACTIONS.PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      payload: { msg: err.response, status: err.response },
     });
   }
 };
