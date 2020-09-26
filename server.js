@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
+const errorHandle = require('./middleware/error');
 const connectDB = require('./config/db');
 
 const app = express();
@@ -39,6 +40,8 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/profile', require('./routes/profile'));
 app.use('/api/posts', require('./routes/posts'));
+// handle error
+app.use(errorHandle);
 
 // Serve static assets in production
 
