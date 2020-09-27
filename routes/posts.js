@@ -13,23 +13,11 @@ const {
   deleteComment,
 } = require('../controller/posts');
 
-router
-  .route('/')
-  .post([auth, [check('text', 'Text is required').not().isEmpty()]], createPost)
-  .get(auth, getPosts);
-
+router.route('/').post(auth, createPost).get(auth, getPosts);
 router.route('/:id').get(auth, getPost).delete(auth, deletePost);
-
-router.put('/like/:id', auth, postLike);
-
-router.put('/unlike/:id', auth, unlikePost);
-
-router.post(
-  '/comment/:id',
-  [auth, [check('text', 'Text is required').not().isEmpty()]],
-  postComment
-);
-
-router.delete('/comment/:id/:comment_id', auth, deleteComment);
+router.route('/like/:id').put(auth, postLike);
+router.route('/unlike/:id').put(auth, unlikePost);
+router.route('/comment/:id').post(auth, postComment);
+router.route('/comment/:id/:comment_id').post(auth, deleteComment);
 
 module.exports = router;
