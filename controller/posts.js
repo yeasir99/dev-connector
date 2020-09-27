@@ -1,7 +1,6 @@
 const asyncHandler = require('../middleware/asyncHandler');
 const ErrorResponse = require('../utils/errorResponse');
 const Post = require('../models/Post');
-const Profile = require('../models/Profile');
 const User = require('../models/User');
 
 // @route      POST api/posts
@@ -82,7 +81,7 @@ exports.postLike = asyncHandler(async (req, res, next) => {
 
   // check post already liked
   if (
-    post.likes.filter(like => like.user.toString() === req.user.id).length > 0
+    post.likes.filter((like) => like.user.toString() === req.user.id).length > 0
   ) {
     return next(new ErrorResponse('Post already liked', 400));
   }
@@ -104,13 +103,14 @@ exports.unlikePost = asyncHandler(async (req, res, next) => {
   // 2) check post not liked
 
   if (
-    post.likes.filter(like => like.user.toString() === req.user.id).length === 0
+    post.likes.filter((like) => like.user.toString() === req.user.id).length ===
+    0
   ) {
     return next(new ErrorResponse('Post has not yet been liked', 400));
   }
   // 3) get remove index
   const removeIndex = post.likes
-    .map(like => like.user.toString())
+    .map((like) => like.user.toString())
     .indexOf(req.params.id);
 
   post.likes.splice(removeIndex, 1);
@@ -157,7 +157,7 @@ exports.deleteComment = asyncHandler(async (req, res, next) => {
 
   // 2) pull out the comment
   const comment = post.comments.find(
-    comment => comment.id === req.params.comment_id
+    (commentItem) => commentItem.id === req.params.comment_id
   );
 
   // 3) if comment not found

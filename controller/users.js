@@ -1,8 +1,8 @@
-const asyncHandler = require('../middleware/asyncHandler');
-const ErrorResponse = require('../utils/errorResponse');
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const asyncHandler = require('../middleware/asyncHandler');
+const ErrorResponse = require('../utils/errorResponse');
 
 const User = require('../models/User');
 

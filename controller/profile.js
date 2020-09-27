@@ -1,7 +1,7 @@
-const asyncHandler = require('../middleware/asyncHandler');
-const ErrorResponse = require('../utils/errorResponse');
 const request = require('request');
 const config = require('config');
+const asyncHandler = require('../middleware/asyncHandler');
+const ErrorResponse = require('../utils/errorResponse');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 const Post = require('../models/Post');
@@ -69,7 +69,7 @@ exports.createOrUpdateProfile = asyncHandler(async (req, res, next) => {
   if (status) profileFields.status = status;
   if (githubusername) profileFields.githubusername = githubusername;
   if (skills) {
-    profileFields.skills = skills.split(',').map(skill => skill.trim());
+    profileFields.skills = skills.split(',').map((skill) => skill.trim());
   }
   profileFields.social = {};
   if (youtube) profileFields.social.youtube = youtube;
@@ -193,7 +193,7 @@ exports.deleteExperience = asyncHandler(async (req, res, next) => {
 
   // 2) remove experience & update profile
   profile.experience = profile.experience.filter(
-    expItem => expItem._id.toString() !== req.params.exp_id
+    (expItem) => expItem._id.toString() !== req.params.exp_id
   );
 
   await profile.save();
@@ -210,7 +210,7 @@ exports.deleteEducation = asyncHandler(async (req, res, next) => {
 
   // 2) remove education item & update profile & send response
   profile.education = profile.education.filter(
-    eduItem => eduItem._id.toString() !== req.params.edu_id
+    (eduItem) => eduItem._id.toString() !== req.params.edu_id
   );
 
   await profile.save();
@@ -253,7 +253,7 @@ exports.userGithubRepos = (req, res, next) => {
     // 2) send request
     request(options, (error, response, body) => {
       // handle error
-      if (error) console.error(error);
+      if (error) throw error;
 
       if (response.statusCode !== 200) {
         return res.status(404).json({
@@ -263,7 +263,6 @@ exports.userGithubRepos = (req, res, next) => {
       res.json(JSON.parse(body));
     });
   } catch (err) {
-    console.error(err.message);
     res.status(500).send('Server Error');
   }
 };
