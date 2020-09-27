@@ -18,6 +18,6 @@ router.route('/:id').get(auth, getPost).delete(auth, deletePost);
 router.route('/like/:id').put(auth, postLike);
 router.route('/unlike/:id').put(auth, unlikePost);
 router.route('/comment/:id').post(auth, postComment);
-router.route('/comment/:id/:comment_id').post(auth, deleteComment);
+router.route('/comment/:id/:comment_id').delete(auth, deleteComment);
 
 module.exports = router;
