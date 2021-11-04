@@ -7,10 +7,10 @@ node_modules/
 /client/.pnp.js
 
 # testing
-/client//coverage
+/client/coverage
 
 # production
-/client//build
+/client/build
 
 # misc
 .DS_Store

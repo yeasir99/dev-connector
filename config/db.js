@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const config = require('config');
+const mongoose = require('mongoose')
+const config = require('config')
 
-const db = config.get('mongoURI');
+const db = config.get('mongoURI')
 
 const connectDB = async () => {
   try {
@@ -10,13 +10,10 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
-    });
-
-    console.log(`Connected Database`);
+    })
   } catch (err) {
-    console.error(err.message);
-    process.exit(1);
+    process.exit(1)
   }
-};
+}
 
-module.exports = connectDB;
+module.exports = connectDB
